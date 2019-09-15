@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>game</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no">
+    <link rel="stylesheet" href="{% static 'game/form_css.css' %}">
+</head>
+<body>
+<br>
+<br>
+<form action="{% url 'game:5566' %}" method="get">
+    {% csrf_token %}
+    <label for="pattern">查询</label>
+    <input name="pattern" id="pattern">
+    <input type="submit">
+</form>
+<br>
+{% if game_list %}
+    <ul class="list-group">
+        {% for game in game_list %}
+            <li class="list-group-item"><a href="http://www.soft5566.com/down/{{ game.num }}-1.html" class="list-group-item">{{ game.game_title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if not_exist_message %}
+    <p>你要查找的不存在</p>
+{% endif %}
+</body>
+</html>
