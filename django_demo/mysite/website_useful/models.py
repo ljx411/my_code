@@ -9,4 +9,4 @@ class Category(models.Model):
 class UrlTools(models.Model):
     title = models.CharField(max_length=100)
     url_link = models.CharField(max_length=100)
-    category = models.ForeignKey(to=Category,on_delete=models.CASCADE)
+    # category = models.ForeignKey(to=Category,on_delete=models.CASCADE)
